@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'ch.noseryoung.plj'
+group = 'project.shop'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -21,14 +21,18 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'com.auth0:java-jwt:4.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation "org.mockito:mockito-core:3.0.0"
+	testImplementation "org.mockito:mockito-core:3.0.0"
 }
 
 tasks.named('test') {

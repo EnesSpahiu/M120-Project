@@ -17,10 +17,8 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 public class Product extends ExtendedEntity {
-
     private String name;
     private double price;
     private String description;
     private String picture_url;
-
 }

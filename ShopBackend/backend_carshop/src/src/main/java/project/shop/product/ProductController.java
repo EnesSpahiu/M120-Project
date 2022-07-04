@@ -10,6 +10,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/product")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000/")
 public class ProductController {
     private final ProductService productService;
 
@@ -26,5 +27,16 @@ public class ProductController {
     @PostMapping({"", "/"})
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
+    }
+
+    @PutMapping({"/{id}", "/{id}/"})
+    public ResponseEntity<Product> updateProductById(@PathVariable String id, @RequestBody Product product){
+        return new ResponseEntity<>(productService.updateById(id, product), HttpStatus.OK);
+    }
+
+    @DeleteMapping({"/{id}", "/{id}/"})
+    public ResponseEntity<Void> deleteProductById(@PathVariable String id){
+        productService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

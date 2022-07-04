@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/shoppingcart")
+@CrossOrigin("http://localhost:3000/")
 public class ShoppingCartController {
 
     private ShoppingCartService service;
@@ -15,12 +16,12 @@ public class ShoppingCartController {
     }
 
     @GetMapping({"/{id}", "/{id}/"})
-    public ResponseEntity<ShoppingCart> getShoppingCart (@PathVariable("id") String id) {
+    public ResponseEntity<ShoppingCart> getShoppingCart(@PathVariable("id") String id) {
         return new ResponseEntity<>(service.getShoppingCart(id), HttpStatus.OK);
     }
 
     @PostMapping({"/"})
-    public ResponseEntity<ShoppingCart> saveShoppingCart (@RequestBody ShoppingCart shoppingCart) {
+    public ResponseEntity<ShoppingCart> saveShoppingCart(@RequestBody ShoppingCart shoppingCart) {
         return new ResponseEntity<>(service.save(shoppingCart), HttpStatus.OK);
     }
 
@@ -30,4 +31,8 @@ public class ShoppingCartController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping({"/{id}", "/{id}/"})
+    public ResponseEntity<ShoppingCart> updateShoppingCartById(@PathVariable String id, @RequestBody ShoppingCart shoppingCart) {
+        return new ResponseEntity<>(service.updateById(id, shoppingCart), HttpStatus.OK);
+    }
 }

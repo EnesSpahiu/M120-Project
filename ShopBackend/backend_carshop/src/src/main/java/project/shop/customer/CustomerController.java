@@ -10,6 +10,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/customer")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000/")
 public class CustomerController {
     private final CustomerService customerService;
 
