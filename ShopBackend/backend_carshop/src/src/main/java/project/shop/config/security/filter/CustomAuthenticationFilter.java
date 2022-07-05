@@ -100,7 +100,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
   protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                           FilterChain chain, Authentication authResult)
       throws IOException {
-    Customer customerModel = customerService.findByUsername("guest");
+    User user = (User) authResult.getPrincipal();
+    Customer customerModel = customerService.findByUsername(user.getUsername());
     String accessToken = jwtManager.createAccessToken(customerModel.getId());
     String refreshToken = jwtManager.createRefreshToken(customerModel.getId());
     response.setContentType(APPLICATION_JSON_VALUE);
